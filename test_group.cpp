@@ -95,3 +95,19 @@ TEST_CASE("Group getSurface method", "[Group]") {
     group.add(&triangle2);
     REQUIRE(group.getSurface() == Catch::Approx(44.0));
 }
+TEST_CASE("Group remove method", "[Group]") {
+    Group group;
+    Point p1(1.0, 2.0);
+    Point p2(3.0, 4.0);
+    Line line(p1, p2);
+    group.add(&line);
+
+    // upewniamy się, że obiekt jest w grupie
+    REQUIRE(group.toString() == "Group(Line(Point(1.0, 2.0), Point(3.0, 4.0)), )");
+
+    // usuwamy
+    group.remove(&line);
+
+    // grupa powinna być pusta
+    REQUIRE(group.toString() == "Group()");
+}

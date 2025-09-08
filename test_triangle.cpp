@@ -96,3 +96,14 @@ TEST_CASE("Triangle getSurface method", "[Triangle]") {
     Triangle triangle2(p4, p5, p6);
     REQUIRE(triangle2.getSurface() == Catch::Approx(6.0));
 }
+TEST_CASE("Triangle equals with different vertex order", "[Triangle]") {
+    Point p1(0.0, 0.0);
+    Point p2(1.0, 0.0);
+    Point p3(0.0, 1.0);
+
+    Triangle t1(p1, p2, p3);
+    // ta sama figura, ale kolejność wierzchołków zmieniona
+    Triangle t2(p3, p1, p2);
+
+    REQUIRE(t1.equals(t2));
+}

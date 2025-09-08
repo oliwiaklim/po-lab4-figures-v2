@@ -70,3 +70,12 @@ TEST_CASE("Line move method", "[Line]") {
     line2.move(2.0, 2.0);
     REQUIRE(line2.toString() == "Line(Point(7.0, 8.0), Point(9.0, 10.0))");
 }
+TEST_CASE("Line equals with reversed endpoints", "[Line]") {
+    Point p1(0.0, 0.0);
+    Point p2(1.0, 1.0);
+
+    Line line1(p1, p2);
+    Line line2(p2, p1);
+
+    REQUIRE(line1.equals(line2));
+}
